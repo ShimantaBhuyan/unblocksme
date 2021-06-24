@@ -47,7 +47,7 @@ const loadGoogleScript = () => {
 const getSheetsData = (sheetName, gapi, id = "") => {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: id || SPREADSHEETID || window.localStorage.getItem("spreadsheetId"),
-        range: `${sheetName}!A2:E3`,
+        range: `${sheetName}!A2:D1000`,
     }).then(function (response) {
         var range = response.result;
         console.log(range);
@@ -156,7 +156,7 @@ const appendToSpreadsheet = async (e, gapi, values) => {
     console.log(values)
     gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEETID,
-        range: `${values.category}!A2:E1000`,
+        range: `${values.category}!A2:D1000`,
         valueInputOption: 'USER_ENTERED',
         insertDataOption: 'INSERT_ROWS',
         majorDimension: "ROWS",
